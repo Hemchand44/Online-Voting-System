@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Online voting System</title>
+     <link rel="stylesheet" href="first.css">
+</head>
+<body>
+     
+    <div class="demo-wrap">
+        <img class="demo-bg" src="assest/bg.jpg"alt="">
+    </div>  
+     <h1>Online Voting System</h1>
+     <div class="header">
+        <a href="Home.html"><img  class="viss" src="assest\vote3.jpg" alt="image is not loaded"></a>
+        <!-- <a href="responsive-login-form\index.html"><button class="btn">Login</button></a> -->
+    </div>
+    
+    <div class="container">
+        <div class="parties">
+            <img class="partyLogo" src="assest/bjp_logo2.png" alt="image is not loaded">
+            <button id="bjpVote" class="vote">Vote</button>
+            <p id="bjpResult" class="votes">Votes: </p>
+        </div>
+        <div class="parties">
+            <img class="partyLogo" src="assest/congress_logo2.jpg" alt="image is not loaded">
+            <button id="congressVote" class="vote">Vote</button>
+            <p id="congressResult" class="votes">Votes: </p>
+        </div>
+        <div class="parties">
+            <img class="partyLogo" src="assest/app_logo2.jpg" alt="image is not loaded">
+            <button id="aapVote" class="vote">Vote</button>
+            <p id="aapResult" class="votes">Votes: </p>
+        </div>
+        <div class="parties">
+            <img class="partyLogo" src="assest/bsp_logo.png" alt="image is not loaded">
+            <button id="bspVote" class="vote">Vote</button>
+            <p id="bspResult" class="votes">Votes: </p>
+        </div>
+        <button id="showResult">Show Election Result</button>
+    </div>
+
+     <!-- <script src="index.js"></script> -->
+
+    <script>
+    let bjp_votes = 0;
+        let congress_votes = 0;
+        let aap_votes = 0;
+        let bsp_votes = 0;
+        let bjp_result = document.getElementById("bjpResult");
+        let congress_result = document.getElementById("congressResult");
+        let aap_result = document.getElementById("aapResult");
+        let bsp_result = document.getElementById("bspResult");
+
+        document.getElementById("bjpVote").addEventListener("click", () => {
+            bjp_votes++;
+            bjp_result.innerHTML = "Votes: " + bjp_votes;
+        })
+        document.getElementById("congressVote").addEventListener("click", () => {
+            congress_votes++;
+            congress_result.innerHTML = "Votes: " + congress_votes;
+        })
+        document.getElementById("aapVote").addEventListener("click", () => {
+            aap_votes++;
+            aap_result.innerHTML = "Votes: " + aap_votes;
+        })
+        document.getElementById("bspVote").addEventListener("click", () => {
+            bsp_votes++;
+            bsp_result.innerHTML = "Votes: " + bsp_votes;
+        })
+
+        document.getElementById("showResult").addEventListener("click", () => {
+            if (bjp_votes > congress_votes && bjp_votes > aap_votes && bjp_votes > bsp_votes) {
+                bjp_result.innerHTML = " BJP won the elections";
+                congress_result.innerHTML = "";
+                aap_result.innerHTML = "";
+                bsp_result.innerHTML = "";
+            } else if (congress_votes > aap_votes && congress_votes > bsp_votes && congress_votes > bjp_votes) {
+                bjp_result.innerHTML = " ";
+                congress_result.innerHTML = " Congress won the elections";
+                aap_result.innerHTML = " ";
+                bsp_result.innerHTML = " ";
+            } else if (aap_votes > bsp_votes && aap_votes > congress_votes && aap_votes > bjp_votes) {
+                bjp_result.innerHTML = "";
+                congress_result.innerHTML = "";
+                aap_result.innerHTML = " AAP won the elections";
+                bsp_result.innerHTML = "";
+            } else if (bsp_votes > congress_votes && bsp_votes > aap_votes && bsp_votes > bjp_votes) {
+                bjp_result.innerHTML = "";
+                congress_result.innerHTML = "";
+                aap_result.innerHTML = "";
+                bsp_result.innerHTML = " BSP won the elections";
+            }
+            else {
+                bjp_result.innerHTML = " NO Result";
+                congress_result.innerHTML = " NO Result";
+                aap_result.innerHTML = " NO Result";
+                bsp_result.innerHTML = " NO Result";
+            }
+            bjp_votes = 0;
+            congress_votes = 0;
+            aap_votes = 0;
+            bsp_votes = 0;
+        })
+
+        </script>
+</body>
+</html>
